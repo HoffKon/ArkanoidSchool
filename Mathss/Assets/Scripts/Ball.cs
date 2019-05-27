@@ -2,7 +2,8 @@
 using UnityEngine;
 
 
-public class Ball : MonoBehaviour {
+public class Ball : MonoBehaviour
+{
 
     [SerializeField] PaddleMovement paddle1;
     [SerializeField] float xPush;
@@ -25,6 +26,11 @@ public class Ball : MonoBehaviour {
             LockBallPaddle();
             LaunchToPaddle();
         }
+    }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (hasStarted)
+            GetComponent<AudioSource>().Play();
     }
     private void LaunchToPaddle()
     {
